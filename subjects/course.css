@@ -2,3 +2,6 @@
 body[data-mode="katakana"] .hero{background:linear-gradient(120deg,#e5e9ff,#eff8ed)}
 body[data-mode="kanji"] .hero{background:linear-gradient(120deg,#f6ece0,#e9f4f0)}
 @media(max-width:750px){.card-layout{grid-template-columns:1fr}.detail{position:static;order:-1}.grid{grid-template-columns:repeat(auto-fill,minmax(98px,1fr))}.glyph-card{min-height:103px;padding:8px}.glyph-card strong{font-size:2rem}.hero{padding:21px}.quizbox,.writingbox{padding:15px}}
+
+.quizbox .quiz-romaji{font-size:1.22rem;color:#176b5a;font-weight:800}
+.quizbox .quiz-word{font-size:2.4rem;color:#1c3832;line-height:1.5}
