@@ -6,8 +6,36 @@ android {
         applicationId 'com.japanlife.app'
         minSdk 24
         targetSdk 35
-        versionCode 3
-        versionName '0.2.1'
+        versionCode 4
+        versionName '0.3.0'
+    }
+    buildFeatures { buildConfig true }
+    flavorDimensions 'edition'
+    productFlavors {
+        japanlife {
+            dimension 'edition'
+            applicationId 'com.japanlife.app'
+            buildConfigField 'String', 'START_PAGE', '"index.html"'
+            resValue 'string', 'app_name', 'JapanLife'
+        }
+        hiragana {
+            dimension 'edition'
+            applicationId 'com.japanlife.hiragana'
+            buildConfigField 'String', 'START_PAGE', '"subjects/hiragana/index.html"'
+            resValue 'string', 'app_name', 'JapanLife Hiragana'
+        }
+        katakana {
+            dimension 'edition'
+            applicationId 'com.japanlife.katakana'
+            buildConfigField 'String', 'START_PAGE', '"subjects/katakana/index.html"'
+            resValue 'string', 'app_name', 'JapanLife Katakana'
+        }
+        kanji {
+            dimension 'edition'
+            applicationId 'com.japanlife.kanji'
+            buildConfigField 'String', 'START_PAGE', '"subjects/kanji/index.html"'
+            resValue 'string', 'app_name', 'JapanLife Kanji'
+        }
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_17
