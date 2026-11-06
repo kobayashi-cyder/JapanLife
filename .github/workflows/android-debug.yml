@@ -16,6 +16,8 @@ jobs:
       - name: Verify application script
         run: |
           node --check app.js
+          node --check i18n.js
+          node --check furigana.js
           node --test tests/smoke.test.mjs
       - uses: actions/setup-java@v4
         with:
@@ -32,7 +34,7 @@ jobs:
       - name: Bundle offline web app
         run: |
           mkdir -p android/app/src/main/assets
-          cp index.html app.js styles.css manifest.webmanifest icon.svg sw.js android/app/src/main/assets/
+          cp index.html app.js i18n.js furigana.js styles.css manifest.webmanifest icon.svg sw.js android/app/src/main/assets/
       - name: Build debug APK
         run: gradle -p android --no-daemon :app:assembleDebug
       - uses: actions/upload-artifact@v4
