@@ -97,7 +97,7 @@ test('course UI launches in the selected language with romaji above Japanese gly
     const detail=get('#detail').innerHTML;
     assert.ok(detail.indexOf('class="detail-roman"')<detail.indexOf('class="detail-symbol"'));
     assert.match(get('#grid').innerHTML,/class="glyph-roman"/);
-    assert.match(get('#quizprompt').innerHTML,/<strong>/);
+    assert.match(get('#quizprompt').innerHTML,/<strong(?:\s|>)/);
     if(mode==='kanji'){
       const quiz=get('#quizprompt').innerHTML;
       assert.match(quiz, /class="quiz-romaji"/);
