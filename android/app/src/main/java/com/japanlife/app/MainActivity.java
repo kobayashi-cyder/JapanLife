@@ -39,7 +39,7 @@ public final class MainActivity extends Activity {
         webView.setWebViewClient(new WebViewClient() {
             @Override public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
                 Uri u = request.getUrl();
-                if ("file".equals(u.getScheme()) && "android_asset".equals(u.getHost())) return false;
+                if ("file".equals(u.getScheme()) && u.toString().startsWith("file:///android_asset/")) return false;
                 if ("https".equals(u.getScheme()) || "http".equals(u.getScheme())) {
                     try { startActivity(new Intent(Intent.ACTION_VIEW, u)); } catch (Exception ignored) {}
                 }
@@ -47,7 +47,7 @@ public final class MainActivity extends Activity {
             }
         });
         setContentView(webView);
-        webView.loadUrl("file:///android_asset/index.html");
+        webView.loadUrl("file:///android_asset/" + BuildConfig.START_PAGE);
     }
 
     @Override public void onBackPressed() {
