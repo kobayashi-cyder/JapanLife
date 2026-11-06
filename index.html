@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#14645c">
+<meta name="description" content="Learn everyday Japanese, see foreign residents' real experiences, and verify practical information about life in Japan.">
+<link rel="manifest" href="./manifest.webmanifest"><link rel="stylesheet" href="./styles.css">
+<title>JapanLife | 日本で暮らす</title>
+</head><body>
+<a href="#main" class="skip">Skip to content</a>
+<header class="topbar"><div class="brand"><span class="logo">日</span><span><b>JapanLife</b><small>日本で暮らす · Learn &amp; Live</small></span></div>
+<div class="top-actions"><label for="language">Language</label><select id="language" aria-label="Display language"><option value="en">English</option><option value="ja">日本語</option></select></div></header>
+<main id="main" class="shell">
+<section class="hero"><div><p class="eyebrow" data-t="eyebrow">JAPANESE × REAL LIFE</p><h1 data-t="headline">Understand Japan. Live your way.</h1><p data-t="intro">Learn useful words, watch real experiences, and check the facts before acting.</p><div class="actions"><button id="begin" class="primary" data-t="start">Start learning</button><button id="watchBtn" class="outline" data-t="watch">Explore everyday videos</button></div></div><div class="hero-icon" aria-hidden="true">くらし<br><span>☀</span></div></section>
+<div class="notice"><span class="dot"></span><span data-t="principle">Personal vlogs show an experience, not a nationwide rule. Always confirm legal and administrative details with official sources.</span></div>
+<div class="stats"><div><b id="completedCount">0</b><span data-t="completed">Lessons completed</span></div><div><b id="practiceCount">0</b><span data-t="practiced">Quiz questions attempted</span></div><div><b id="taskCount">0</b><span data-t="tasksDone">Life tasks checked</span></div></div>
+<nav class="tabs" aria-label="Features">
+<button data-view="learn" class="active" data-t="learn">Learn Japanese</button>
+<button data-view="videos" data-t="videos">Daily life videos</button>
+<button data-view="guides" data-t="guides">Life guide</button>
+<button data-view="facts" data-t="facts">Fact checks</button>
+<button data-view="plan" data-t="plan">My plan</button>
+</nav>
+<section id="view-learn" class="view"><div class="heading"><div><h2 data-t="learnTitle">Japanese for real situations</h2><p data-t="learnDesc">Practice one expression, listen, and answer a quick question.</p></div><input id="search" type="search" data-placeholder="search" placeholder="Search a topic" aria-label="Search lessons"></div><div id="lessonCards" class="cards"></div></section>
+<section id="view-videos" class="view" hidden><div class="heading"><div><h2 data-t="videoTitle">Life, as residents experience it</h2><p data-t="videoDesc">Observe the experience, practice a phrase, then check an official reference. Video links open YouTube only when selected.</p></div></div><div id="videoCards" class="cards"></div></section>
+<section id="view-guides" class="view" hidden><div class="heading"><div><h2 data-t="guideTitle">Know what to verify</h2><p data-t="guideDesc">Rules, contracts and social customs are different. Go to the original source for details.</p></div></div><div id="guideCards" class="cards"></div></section>
+<section id="view-facts" class="view" hidden><div class="heading"><div><h2 data-t="factsTitle">Check before you worry</h2><p data-t="factsDesc">Replace a scary generalization with a specific verification step.</p></div></div><div id="factCards" class="cards"></div></section>
+<section id="view-plan" class="view" hidden><div class="heading"><div><h2 data-t="planTitle">My first steps</h2><p data-t="planDesc">A simple local checklist. Different residents have different obligations.</p></div></div><div id="taskCards" class="checklist"></div><div class="manage"><button id="export" class="outline" data-t="export">Export progress</button><button id="reset" class="outline danger" data-t="reset">Reset progress</button></div></section>
+</main>
+<footer><span>JapanLife · MVP 0.1.0</span><span data-t="foot">Independent learning, not individual legal or medical advice. No registration or tracking.</span></footer>
+<script src="./app.js" defer></script></body></html>
