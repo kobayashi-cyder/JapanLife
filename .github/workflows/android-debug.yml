@@ -18,7 +18,7 @@ jobs:
           node --check app.js
           node --check i18n.js
           node --check furigana.js
-          node --test tests/smoke.test.mjs
+          node --test tests/*.test.mjs
       - uses: actions/setup-java@v4
         with:
           distribution: temurin
