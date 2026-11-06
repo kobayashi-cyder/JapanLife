@@ -36,7 +36,7 @@ GitHub Pages に公開するとオンライン配布できる（公開設定は�
 
 ## Androidビルド（開発者向け）
 
-GitHub Actions の **Build debug APK** ワークフローが実行されれば、Java 17・Android SDK 35・Gradleの環境でデバッグ署名APKを生成し、Artifactとして保存する。Android Studioで `android/` を開いても開発できる。**現時点では実機検証済み・ストア公開可とは主張しない。**
+GitHub Actions の **Build debug APK** ワークフローが実行されれば、Java 17・Android SDK 35・Gradleの環境でデバッグ署名APKを生成し、Artifactとして保存する。Android Studioで `android/` を開いても開発できる。**GitHub Actions の初回Androidビルドは成功しましたが、実機検証済み・ストア公開可とは主張しません。**
 
 ## 注意と品質基準
 
@@ -45,4 +45,4 @@ GitHub Actions の **Build debug APK** ワークフローが実行されれば�
 - YouTubeリンク先の視聴時にはYouTube側の通信とプライバシーポリシーが適用される。
 - プロジェクトは政府・動画制作者による監修や認定を受けていない。
 
-MIT License（コード）。第三者サイトや動画の権利は各権利者に帰属。
+ライセンスは公開前に決定します（現時点で未設定）。第三者サイトや動画の権利は各権利者に帰属。
