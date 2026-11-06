@@ -74,6 +74,14 @@ test('app boot and language/furigana setting render correctly',()=>{
   vm.runInContext(src['app.js'],context,{filename:'app.js'});
   assert.match(element('#lessonCards').innerHTML,/<ruby>三番線/);
   assert.match(element('#lessonCards').innerHTML,/<rt>さんばんせん<\/rt>/);
+  // The first thing a learner sees inside a phrase is the romaji, not the kanji.
+  const lessonMarkup=element('#lessonCards').innerHTML;
+  assert.ok(lessonMarkup.indexOf('Hajimemashite.') < lessonMarkup.indexOf('はじめまして。'));
+  assert.match(lessonMarkup, /<div class="romaji-first"[^>]*>[\s\S]*?<span class="romaji-text">Hajimemashite\./);
+  const videoMarkup=element('#videoCards').innerHTML;
+  assert.ok(videoMarkup.indexOf('Shoki hiyō') < videoMarkup.indexOf('初期費用の内訳'));
+  assert.match(videoMarkup, /class="romaji-text"/);
+  assert.match(videoMarkup, /class="meaning-after"/);
   assert.equal(element('#furigana').checked,true);
   vm.runInContext("state.lang='vi';translate()",context);
   assert.equal(document.documentElement.lang,'vi');
