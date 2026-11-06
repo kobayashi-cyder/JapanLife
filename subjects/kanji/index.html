@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#14645c"><meta name="description" content="JapanLife independent Japanese kanji study app">
+<link rel="manifest" href="./manifest.webmanifest"><link rel="stylesheet" href="../course.css">
+<title>JapanLife Kanji | 漢字</title></head>
+<body data-mode="kanji"><header class="top"><a href="../../index.html" data-t="back">← JapanLife home</a>
+<select id="language" aria-label="Choose display language"><option value="en">English</option><option value="ja">日本語</option><option value="zh">简体中文</option><option value="vi">Tiếng Việt</option><option value="ne">नेपाली</option></select></header>
+<main class="shell"><section class="hero"><span class="eyebrow">JapanLife · Writing Lab</span><h1 id="subjectTitle">Kanji | 漢字</h1><p data-t="sub">Learn Japanese writing one step at a time</p></section>
+<div class="stats"><div class="stat"><strong id="learned">0</strong><span data-t="known">Learned</span></div><div class="stat"><strong id="correct">0</strong><span data-t="correct">Correct</span></div><div class="stat"><strong id="attempts">0</strong><span data-t="attempts">Questions</span></div></div>
+<div class="toolbar"><label for="group" data-t="filter">Choose a set</label><select id="group"></select></div>
+<nav class="tabs" role="tablist" aria-label="Learning modes">
+<button type="button" data-tab="cards" class="active" aria-selected="true" data-t="cards">Explore</button>
+<button type="button" data-tab="quiz" aria-selected="false" data-t="quiz">Reading quiz</button>
+<button type="button" data-tab="write" aria-selected="false" data-t="write">Write</button></nav>
+<section data-panel="cards" aria-label="Study characters"><div class="card-layout"><div id="grid" class="grid"></div><aside id="detail" class="detail" aria-live="polite"></aside></div></section>
+<section data-panel="quiz" hidden aria-label="Quiz"><div class="quizbox"><div class="prompt" id="quizprompt"></div><div id="answers" class="answers"></div><p id="feedback" class="feedback" role="status"></p><button id="next" class="next" type="button" hidden data-t="next">Next question</button></div></section>
+<section data-panel="write" hidden aria-label="Handwriting practice"><div class="writingbox"><h2 data-t="practice">Practice this symbol</h2><p class="muted" data-t="drawing">Trace with a finger, stylus or mouse. Writing is not automatically graded.</p><canvas id="writingCanvas" width="360" height="360" aria-label="Handwriting practice area" tabindex="0"></canvas><div class="ctrl"><button id="clear" type="button" data-t="clear">Clear writing</button><label><input id="guide" type="checkbox" checked><span data-t="guide">Show tracing guide</span></label></div><p class="muted" data-t="check">Review the writing yourself; this is not automatic handwriting recognition.</p></div></section>
+<aside class="tip"><strong data-t="tip">Learning tip</strong><p id="modeNote"></p><small data-t="romanNote">Romaji comes first, followed by the Japanese writing and its reading.</small></aside>
+</main><footer class="footer">JapanLife · Kanji | 漢字 · MVP 0.3.0</footer>
+<script src="../kana.js" defer></script><script src="../kanji.js" defer></script><script src="../course.js" defer></script>
+</body></html>
