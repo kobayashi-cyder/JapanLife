@@ -29,7 +29,7 @@ window.JL_FURIGANA = (() => {
     '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
   }[c]));
   const dict = Object.fromEntries(entries);
-  const terms = [...dict.keys()].sort((a,b) => b.length-a.length);
+  const terms = Object.keys(dict).sort((a,b) => b.length-a.length);
   const escapedTerms=terms.map(x => x.replace(/[-/\\^$*+?.()|[\]{}]/g,'\\$&'));
   const pattern = new RegExp(escapedTerms.join('|'),'g');
   function ruby(input, show=true) {
