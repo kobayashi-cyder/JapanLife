@@ -79,7 +79,9 @@ test('app boot and language/furigana setting render correctly',()=>{
   assert.ok(lessonMarkup.indexOf('Hajimemashite.') < lessonMarkup.indexOf('はじめまして。'));
   assert.match(lessonMarkup, /<div class="romaji-first"[^>]*>[\s\S]*?<span class="romaji-text">Hajimemashite\./);
   const videoMarkup=element('#videoCards').innerHTML;
-  assert.ok(videoMarkup.indexOf('Shoki hiyō') < videoMarkup.indexOf('初期費用の内訳'));
+  const firstVideo=videoMarkup.split('<article class="card">')[1];
+  assert.ok(firstVideo.indexOf('class="romaji-text"') < firstVideo.indexOf('class="japanese-text"'));
+  assert.match(firstVideo, /<span class="romaji-text">Shoki hiyō/);
   assert.match(videoMarkup, /class="romaji-text"/);
   assert.match(videoMarkup, /class="meaning-after"/);
   assert.equal(element('#furigana').checked,true);
