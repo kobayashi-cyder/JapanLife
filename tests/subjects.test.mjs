@@ -53,6 +53,7 @@ test('standalone PWA entrypoints and four Android application flavors',()=>{
     assert.ok(html.includes('data-mode="'+mode+'"'));
     assert.match(html,/src="\.\.\/course.js"/);
     assert.match(html,/id="writingCanvas"/);
+    assert.ok(readFileSync('android/app/src/'+mode+'/res/drawable/app_icon.xml','utf8').includes('vector'));
     assert.equal(manifest.start_url,'./index.html');
     assert.equal(manifest.display,'standalone');
     assert.match(readFileSync('index.html','utf8'),new RegExp('subjects/'+mode+'/index.html'));
@@ -97,6 +98,13 @@ test('course UI launches in the selected language with romaji above Japanese gly
     assert.ok(detail.indexOf('class="detail-roman"')<detail.indexOf('class="detail-symbol"'));
     assert.match(get('#grid').innerHTML,/class="glyph-roman"/);
     assert.match(get('#quizprompt').innerHTML,/<strong>/);
+    if(mode==='kanji'){
+      const quiz=get('#quizprompt').innerHTML;
+      assert.match(quiz, /class="quiz-romaji"/);
+      assert.match(quiz, /class="quiz-word"/);
+      assert.ok(quiz.indexOf('quiz-romaji')<quiz.indexOf('quiz-word'));
+      assert.ok(quiz.includes('□'), 'kanji quiz must mask exactly one target glyph');
+    }
     assert.equal(get('#group').value,mode==='kanji'?'numbers':'basic');
     assert.ok(events.has('#writingCanvas::pointerdown'));
   }
