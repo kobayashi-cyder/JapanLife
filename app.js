@@ -81,7 +81,7 @@ function renderLessons(){
     const correctSlot=i%3;
     for(let n=0;n<correctSlot;n++)answers.unshift(answers.pop());
     return '<article class="card"><span class="pill">'+esc(l.level)+'</span><h3>'+maybeRuby(translated('topics',i,l.topic))+'</h3>'+
-    '<div class="phrase"><strong lang="ja">'+jp(l.jp)+'</strong><small>'+esc(l.read)+'</small><button type="button" data-speak="'+i+'">🔊 '+esc(tr('speak'))+'</button></div>'+
+    '<div class="phrase"><div class="romaji-first" lang="ja-Latn"><span class="romaji-label">ROMAJI</span><span class="romaji-text">'+esc(l.read)+'</span></div><strong class="japanese-text" lang="ja">'+jp(l.jp)+'</strong><button type="button" data-speak="'+i+'">🔊 '+esc(tr('speak'))+'</button></div>'+
     '<p class="meta">'+esc(meaning(i))+'</p>'+
     '<div class="quiz"><strong>'+esc(tr('quiz'))+'</strong><div class="choices">'+answers.map((c,j)=>'<button type="button" data-answer="'+i+':'+j+'">'+esc(c)+'</button>').join('')+'</div><div id="feedback-'+i+'" class="feedback" role="status"></div></div>'+
     '<button class="outline" type="button" data-complete="'+i+'">'+esc(state.completed.includes(i)?tr('done'):tr('mark'))+'</button></article>';
@@ -94,7 +94,7 @@ function renderVideos(){
     '<p class="meta">'+esc(v.creator)+' · '+esc(v.date)+'</p>'+
     '<p class="watch"><b>'+esc(tr('observe'))+':</b> '+maybeRuby(translated('observe',i,v.observe))+'</p>'+
     '<p><b>'+esc(tr('context'))+':</b> '+maybeRuby(translated('context',i,v.context))+'</p>'+
-    '<div class="phrase"><small>'+esc(tr('practice'))+'</small><strong lang="ja">'+jp(lessons[v.lesson].jp)+'</strong>'+
+    '<div class="phrase"><small>'+esc(tr('practice'))+'</small><div class="romaji-first" lang="ja-Latn"><span class="romaji-label">ROMAJI</span><span class="romaji-text">'+esc(lessons[v.lesson].read)+'</span></div><strong class="japanese-text" lang="ja">'+jp(lessons[v.lesson].jp)+'</strong><span class="meaning-after">'+esc(meaning(v.lesson))+'</span>'+
     '<button type="button" data-speak="'+v.lesson+'">🔊 '+esc(tr('speak'))+'</button></div>'+
     '<div class="links"><a href="'+esc(v.url)+'" target="_blank" rel="noopener noreferrer">'+esc(tr('openVideo'))+'</a>'+
     '<a href="'+esc(v.source)+'" target="_blank" rel="noopener noreferrer">'+esc(tr('openSource'))+'</a></div></article>'
