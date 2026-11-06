@@ -8,7 +8,7 @@ window.JL_I18N = (() => {
     zh:{
       eyebrow:'日语 × 真实生活',headline:'了解日本，自在生活。',intro:'学习实用表达，观察真实生活，行动前核实信息。',
       start:'开始学习',watch:'探索日常视频',principle:'个人视频只代表个人经历，不是全国通用的规定。请向官方来源确认法律和行政手续。',
-      completed:'已完成课程',practiced:'已答题数',tasksDone:'已核对事项',learn:'日语学习',videos:'生活视频',guides:'生活指南',facts:'事实核查',plan:'我的计划',
+      completed:'已完成课程',practiced:'已答题数',tasksDone:'已核对事项',learn:'日语学习',characters:'文字科目',charactersTitle:'假名与汉字',charactersDesc:'三个独立课程，包含听音、测验和描写练习。',hiraganaTitle:'平假名',hiraganaDesc:'学习46个基础假名、浊音和拗音。',katakanaTitle:'片假名',katakanaDesc:'阅读外来语、名字与商店标识。',kanjiTitle:'汉字',kanjiDesc:'通过50个常用字及例词学习读音。',openCourse:'进入课程 ↗',videos:'生活视频',guides:'生活指南',facts:'事实核查',plan:'我的计划',
       learnTitle:'实用情景日语',learnDesc:'学习表达、听发音，并完成简短测验。',search:'搜索课程',
       videoTitle:'日本居民的真实体验',videoDesc:'观察经历、练习日语、再核对官方资料。仅在点击后打开 YouTube。',
       guideTitle:'明确需要核实的信息',guideDesc:'法律、合同和社会习惯不是一回事。请查看原始资料。',
@@ -24,7 +24,7 @@ window.JL_I18N = (() => {
     vi:{
       eyebrow:'TIẾNG NHẬT × CUỘC SỐNG THỰC',headline:'Hiểu Nhật Bản. Sống theo cách của bạn.',intro:'Học cách nói hữu ích, xem cuộc sống thực và kiểm tra thông tin trước khi hành động.',
       start:'Bắt đầu học',watch:'Khám phá video đời sống',principle:'Vlog chỉ phản ánh trải nghiệm cá nhân, không phải quy định chung. Hãy xác minh thủ tục tại nguồn chính thức.',
-      completed:'Bài đã hoàn thành',practiced:'Câu hỏi đã làm',tasksDone:'Việc đã kiểm tra',learn:'Học tiếng Nhật',videos:'Video đời sống',guides:'Cẩm nang',facts:'Kiểm chứng thông tin',plan:'Kế hoạch',
+      completed:'Bài đã hoàn thành',practiced:'Câu hỏi đã làm',tasksDone:'Việc đã kiểm tra',learn:'Học tiếng Nhật',characters:'Học chữ Nhật',charactersTitle:'Hiragana, Katakana và Kanji',charactersDesc:'Ba môn độc lập với nghe, trắc nghiệm và tập viết.',hiraganaTitle:'Hiragana',hiraganaDesc:'46 chữ cơ bản cùng âm hữu thanh và âm ghép.',katakanaTitle:'Katakana',katakanaDesc:'Đọc từ mượn, tên riêng và biển hiệu.',kanjiTitle:'Kanji',kanjiDesc:'Học 50 chữ thông qua từ ví dụ và cách đọc.',openCourse:'Mở môn học ↗',videos:'Video đời sống',guides:'Cẩm nang',facts:'Kiểm chứng thông tin',plan:'Kế hoạch',
       learnTitle:'Tiếng Nhật cho tình huống thực tế',learnDesc:'Học mẫu câu, nghe phát âm và làm câu hỏi ngắn.',search:'Tìm bài học',
       videoTitle:'Cuộc sống qua góc nhìn người đang sống tại Nhật',videoDesc:'Quan sát, luyện nói, rồi kiểm tra nguồn chính thức. YouTube chỉ mở khi bạn chọn.',
       guideTitle:'Biết điều cần kiểm tra',guideDesc:'Luật, hợp đồng và tập quán là những điều khác nhau. Xem nguồn gốc thông tin.',
@@ -40,7 +40,7 @@ window.JL_I18N = (() => {
     ne:{
       eyebrow:'जापानी भाषा × वास्तविक जीवन',headline:'जापान बुझ्नुहोस्। आफ्नै तरिकाले बाँच्नुहोस्।',intro:'काम लाग्ने वाक्य सिक्नुहोस्, वास्तविक अनुभव हेर्नुहोस् र कदम चाल्नुअघि तथ्य जाँच्नुहोस्।',
       start:'सिक्न सुरु गर्नुहोस्',watch:'दैनिक जीवनका भिडियो हेर्नुहोस्',principle:'व्यक्तिगत भिडियो एक व्यक्तिको अनुभव हो, देशभर लागू हुने नियम होइन। कानुनी र प्रशासनिक कुरा आधिकारिक स्रोतबाट जाँच्नुहोस्।',
-      completed:'पूरा पाठ',practiced:'अभ्यास गरिएका प्रश्न',tasksDone:'जाँचिएका काम',learn:'जापानी भाषा सिक्नुहोस्',videos:'दैनिक जीवनका भिडियो',guides:'जीवन गाइड',facts:'तथ्य जाँच',plan:'मेरो योजना',
+      completed:'पूरा पाठ',practiced:'अभ्यास गरिएका प्रश्न',tasksDone:'जाँचिएका काम',learn:'जापानी भाषा सिक्नुहोस्',characters:'लिपि पाठ',charactersTitle:'हिरागाना, काताकाना र कान्जी',charactersDesc:'सुन्ने, प्रश्न र लेख्ने अभ्याससहित तीन छुट्टै पाठ।',hiraganaTitle:'हिरागाना',hiraganaDesc:'४६ आधारभूत अक्षर, घोष ध्वनि र संयुक्त ध्वनि।',katakanaTitle:'काताकाना',katakanaDesc:'नाम, विदेशी शब्द र बोर्ड पढ्ने अभ्यास।',kanjiTitle:'कान्जी',kanjiDesc:'५० कान्जीलाई उदाहरण शब्दको उच्चारणसँग सिक्नुहोस्।',openCourse:'पाठ खोल्नुहोस् ↗',videos:'दैनिक जीवनका भिडियो',guides:'जीवन गाइड',facts:'तथ्य जाँच',plan:'मेरो योजना',
       learnTitle:'दैनिक परिस्थितिका लागि जापानी',learnDesc:'वाक्य सिक्नुहोस्, उच्चारण सुन्नुहोस् र छोटो प्रश्न हल गर्नुहोस्।',search:'पाठ खोज्नुहोस्',
       videoTitle:'जापानमा बस्ने मानिसको वास्तविक अनुभव',videoDesc:'हेर्नुहोस्, बोल्ने अभ्यास गर्नुहोस् र आधिकारिक जानकारीसँग तुलना गर्नुहोस्। YouTube चयन गरेपछि मात्र खुल्छ।',
       guideTitle:'के जाँच्नुपर्छ बुझ्नुहोस्',guideDesc:'कानुन, सम्झौता र सामाजिक चलन फरक कुरा हुन्। मूल स्रोत हेर्नुहोस्।',
