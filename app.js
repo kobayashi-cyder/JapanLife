@@ -58,41 +58,79 @@ const tasks=[
 ['日本語で聞き返す表現を練習する','Practice asking someone to repeat information']
 ];
 const KEY='japanlife-progress-v1';
-let state={lang:'en',completed:[],attempted:0,checked:[]};
+let state={lang:'en',furigana:true,completed:[],attempted:0,checked:[]};
 try{const stored=JSON.parse(localStorage.getItem(KEY)||'{}');if(stored&&typeof stored==='object'){state={...state,...stored};if(!Array.isArray(state.completed))state.completed=[];if(!Array.isArray(state.checked))state.checked=[];if(!Number.isInteger(state.attempted)||state.attempted<0)state.attempted=0}}catch(e){}
-if(!data[state.lang])state.lang='en';
-const tr=k=>data[state.lang][k]||data.en[k]||k;
+if(!window.JL_I18N.hasLanguage(state.lang))state.lang='en';
+if(typeof state.furigana!=='boolean')state.furigana=true;
+const tr=k=>data[state.lang]?.[k]||window.JL_I18N.message(state.lang,k)||data.en[k]||k;
 const local=a=>a[state.lang==='ja'?0:1];
+const translated=(kind,index,base)=>window.JL_I18N.field(state.lang,kind,index)||local(base);
+const meaning=i=>window.JL_I18N.field(state.lang,'meanings',i)||lessons[i].en;
+const jp=txt=>window.JL_FURIGANA.ruby(txt,state.furigana);
+const maybeRuby=txt=>state.lang==='ja'?jp(txt):esc(txt);
 function save(){try{localStorage.setItem(KEY,JSON.stringify(state))}catch(e){}}
 function stats(){$('#completedCount').textContent=state.completed.length;$('#practiceCount').textContent=state.attempted;$('#taskCount').textContent=state.checked.length}
 function speak(s){if(window.JapanLifeAndroid&&typeof window.JapanLifeAndroid.speak==='function'){window.JapanLifeAndroid.speak(s);return;}if('speechSynthesis' in window){speechSynthesis.cancel();const utterance=new SpeechSynthesisUtterance(s);utterance.lang='ja-JP';utterance.rate=.88;speechSynthesis.speak(utterance)}}
 function renderLessons(){
-const q=($('#search').value||'').toLocaleLowerCase();
-$('#lessonCards').innerHTML=lessons.map((l,i)=>({l,i})).filter(x=>(local(x.l.topic)+' '+x.l.jp+' '+x.l.en).toLocaleLowerCase().includes(q)).map(({l,i})=>{
-const choices=[l.en,lessons[(i+3)%lessons.length].en,lessons[(i+7)%lessons.length].en];
-return '<article class="card"><span class="pill">'+esc(l.level)+'</span><h3>'+esc(local(l.topic))+'</h3>'+
-'<div class="phrase"><strong lang="ja">'+esc(l.jp)+'</strong><small>'+esc(l.read)+'</small><button type="button" data-speak="'+i+'">🔊 '+esc(tr('speak'))+'</button></div>'+
-'<p class="meta">'+esc(l.en)+'</p>'+
-'<div class="quiz"><strong>'+esc(tr('quiz'))+'</strong><div class="choices">'+choices.map((c,j)=>'<button type="button" data-answer="'+i+':'+j+'">'+esc(c)+'</button>').join('')+'</div><div id="feedback-'+i+'" class="feedback" role="status"></div></div>'+
-'<button class="outline" type="button" data-complete="'+i+'">'+esc(state.completed.includes(i)?tr('done'):tr('mark'))+'</button></article>'}).join('')||'<p>'+esc(tr('noResults'))+'</p>';
+  const q=($('#search').value||'').toLocaleLowerCase();
+  const found=lessons.map((l,i)=>({l,i})).filter(({l,i})=>
+    (translated('topics',i,l.topic)+' '+l.jp+' '+l.read+' '+meaning(i)).toLocaleLowerCase().includes(q)
+  );
+  $('#lessonCards').innerHTML=found.map(({l,i})=>{
+    const answers=[meaning(i),meaning((i+3)%lessons.length),meaning((i+7)%lessons.length)];
+    const correctSlot=i%3;
+    for(let n=0;n<correctSlot;n++)answers.unshift(answers.pop());
+    return '<article class="card"><span class="pill">'+esc(l.level)+'</span><h3>'+maybeRuby(translated('topics',i,l.topic))+'</h3>'+
+    '<div class="phrase"><strong lang="ja">'+jp(l.jp)+'</strong><small>'+esc(l.read)+'</small><button type="button" data-speak="'+i+'">🔊 '+esc(tr('speak'))+'</button></div>'+
+    '<p class="meta">'+esc(meaning(i))+'</p>'+
+    '<div class="quiz"><strong>'+esc(tr('quiz'))+'</strong><div class="choices">'+answers.map((c,j)=>'<button type="button" data-answer="'+i+':'+j+'">'+esc(c)+'</button>').join('')+'</div><div id="feedback-'+i+'" class="feedback" role="status"></div></div>'+
+    '<button class="outline" type="button" data-complete="'+i+'">'+esc(state.completed.includes(i)?tr('done'):tr('mark'))+'</button></article>';
+  }).join('')||'<p>'+esc(tr('noResults'))+'</p>';
 }
 function renderVideos(){
-$('#videoCards').innerHTML=videos.map((v,i)=>'<article class="card"><span class="pill warning">'+esc(tr('videoBadge'))+'</span><h3>'+esc(local(v.topic))+'</h3><p><b>'+esc(v.title)+'</b></p><p class="meta">'+esc(v.creator)+' · '+esc(v.date)+'</p><p class="watch"><b>'+esc(tr('observe'))+':</b> '+esc(local(v.observe))+'</p><p><b>'+esc(tr('context'))+':</b> '+esc(local(v.context))+'</p><div class="phrase"><small>'+esc(tr('practice'))+'</small><strong lang="ja">'+esc(lessons[v.lesson].jp)+'</strong><button type="button" data-speak="'+v.lesson+'">🔊 '+esc(tr('speak'))+'</button></div><div class="links"><a href="'+esc(v.url)+'" target="_blank" rel="noopener noreferrer">'+esc(tr('openVideo'))+'</a><a href="'+esc(v.source)+'" target="_blank" rel="noopener noreferrer">'+esc(tr('openSource'))+'</a></div></article>').join('');
+  $('#videoCards').innerHTML=videos.map((v,i)=>
+    '<article class="card"><span class="pill warning">'+esc(tr('videoBadge'))+'</span>'+
+    '<h3>'+maybeRuby(translated('videoTopics',i,v.topic))+'</h3><p><b>'+esc(v.title)+'</b></p>'+
+    '<p class="meta">'+esc(v.creator)+' · '+esc(v.date)+'</p>'+
+    '<p class="watch"><b>'+esc(tr('observe'))+':</b> '+maybeRuby(translated('observe',i,v.observe))+'</p>'+
+    '<p><b>'+esc(tr('context'))+':</b> '+maybeRuby(translated('context',i,v.context))+'</p>'+
+    '<div class="phrase"><small>'+esc(tr('practice'))+'</small><strong lang="ja">'+jp(lessons[v.lesson].jp)+'</strong>'+
+    '<button type="button" data-speak="'+v.lesson+'">🔊 '+esc(tr('speak'))+'</button></div>'+
+    '<div class="links"><a href="'+esc(v.url)+'" target="_blank" rel="noopener noreferrer">'+esc(tr('openVideo'))+'</a>'+
+    '<a href="'+esc(v.source)+'" target="_blank" rel="noopener noreferrer">'+esc(tr('openSource'))+'</a></div></article>'
+  ).join('');
 }
 function renderGuides(){
-$('#guideCards').innerHTML=guides.map(g=>'<article class="card"><span class="pill">'+esc(local(g.kind))+'</span><h3>'+esc(local(g.title))+'</h3><p>'+esc(local(g.description))+'</p><div class="links"><a href="'+esc(g.source)+'" target="_blank" rel="noopener noreferrer">'+esc(tr('openSource'))+'</a></div></article>').join('')
+  $('#guideCards').innerHTML=guides.map((g,i)=>
+    '<article class="card"><span class="pill">'+maybeRuby(translated('guideKinds',i,g.kind))+'</span>'+
+    '<h3>'+maybeRuby(translated('guideTitles',i,g.title))+'</h3>'+
+    '<p>'+maybeRuby(translated('guideDescriptions',i,g.description))+'</p>'+
+    '<div class="links"><a href="'+esc(g.source)+'" target="_blank" rel="noopener noreferrer">'+esc(tr('openSource'))+'</a></div></article>'
+  ).join('');
 }
 function renderFacts(){
-$('#factCards').innerHTML=facts.map(f=>'<article class="card"><span class="pill warning">'+esc(tr('claim'))+'</span><h3>'+esc(local(f.worry))+'</h3><p>'+esc(local(f.truth))+'</p><p class="watch"><b>'+esc(tr('verify'))+': </b>'+esc(local(f.next))+'</p><div class="links"><a href="'+esc(f.source)+'" target="_blank" rel="noopener noreferrer">'+esc(tr('openSource'))+'</a></div></article>').join('')
+  $('#factCards').innerHTML=facts.map((f,i)=>
+    '<article class="card"><span class="pill warning">'+esc(tr('claim'))+'</span>'+
+    '<h3>'+maybeRuby(translated('factWorries',i,f.worry))+'</h3>'+
+    '<p>'+maybeRuby(translated('factTruths',i,f.truth))+'</p>'+
+    '<p class="watch"><b>'+esc(tr('verify'))+': </b>'+maybeRuby(translated('factActions',i,f.next))+'</p>'+
+    '<div class="links"><a href="'+esc(f.source)+'" target="_blank" rel="noopener noreferrer">'+esc(tr('openSource'))+'</a></div></article>'
+  ).join('');
 }
 function renderPlan(){
-$('#taskCards').innerHTML=tasks.map((t,i)=>'<label class="check"><input type="checkbox" data-task="'+i+'" '+(state.checked.includes(i)?'checked':'')+'><span>'+esc(local(t))+'</span></label>').join('')
+  $('#taskCards').innerHTML=tasks.map((t,i)=>
+    '<label class="check"><input type="checkbox" data-task="'+i+'" '+(state.checked.includes(i)?'checked':'')+'>'+
+    '<span>'+maybeRuby(translated('tasks',i,t))+'</span></label>'
+  ).join('');
 }
 function translate(){
-document.documentElement.lang=state.lang;$('#language').value=state.lang;
-document.querySelectorAll('[data-t]').forEach(el=>el.textContent=tr(el.dataset.t));
-$('#search').placeholder=tr('search');$('#search').setAttribute('aria-label',tr('search'));
-renderLessons();renderVideos();renderGuides();renderFacts();renderPlan();stats()
+  document.documentElement.lang=state.lang;
+  $('#language').value=state.lang;
+  $('#furigana').checked=state.furigana;
+  document.querySelectorAll('[data-t]').forEach(el=>el.textContent=tr(el.dataset.t));
+  $('#search').placeholder=tr('search');
+  $('#search').setAttribute('aria-label',tr('search'));
+  renderLessons();renderVideos();renderGuides();renderFacts();renderPlan();stats();
 }
 function setView(view){
 document.querySelectorAll('.view').forEach(x=>x.hidden=x.id!=='view-'+view);
@@ -102,10 +140,11 @@ document.querySelector('.tabs').addEventListener('click',e=>{const btn=e.target.
 $('#begin').addEventListener('click',()=>setView('learn'));
 $('#watchBtn').addEventListener('click',()=>setView('videos'));
 $('#language').addEventListener('change',e=>{state.lang=e.target.value;save();translate()});
+$('#furigana').addEventListener('change',e=>{state.furigana=e.target.checked;save();translate()});
 $('#search').addEventListener('input',renderLessons);
 $('#lessonCards').addEventListener('click',e=>{
 const sp=e.target.closest('[data-speak]');if(sp){speak(lessons[Number(sp.dataset.speak)].jp);return}
-const ans=e.target.closest('[data-answer]');if(ans){const [i,j]=ans.dataset.answer.split(':').map(Number);const isRight=j===0;state.attempted++;save();stats();const box=$('#feedback-'+i);box.textContent=isRight?tr('correct'):tr('wrong')+' '+lessons[i].en;ans.classList.add(isRight?'correct':'wrong');return}
+const ans=e.target.closest('[data-answer]');if(ans){const [i,j]=ans.dataset.answer.split(':').map(Number);const isRight=j===i%3;state.attempted++;save();stats();const box=$('#feedback-'+i);box.textContent=isRight?tr('correct'):tr('wrong')+' '+meaning(i);ans.classList.add(isRight?'correct':'wrong');return}
 const done=e.target.closest('[data-complete]');if(done){const i=Number(done.dataset.complete);if(!state.completed.includes(i))state.completed.push(i);save();stats();renderLessons()}
 });
 $('#videoCards').addEventListener('click',e=>{const sp=e.target.closest('[data-speak]');if(sp)speak(lessons[Number(sp.dataset.speak)].jp)});
