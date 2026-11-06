@@ -6,7 +6,7 @@ const groups=['numbers','calendar','people','daily'];
 return raw.split('\n').map((row,i)=>{
   const col=row.split('|');
   if(col.length!==9)throw new Error('Invalid kanji record: '+i);
-  return {id:'kanji-'+i,group:groups[Math.floor(i/10)],symbol:col[0],word:col[1],
+  return {id:'kanji-'+i,group:groups[Math.min(3,Math.floor(i/10))],symbol:col[0],word:col[1],
     reading:col[2],roman:col[3],gloss:{en:col[4],ja:col[5],zh:col[6],vi:col[7],ne:col[8]}};
 });
 })();
