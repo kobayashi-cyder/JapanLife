@@ -15,3 +15,40 @@ ruby rp { display:none; }
   .top-actions select { max-width:52%; }
   .top-actions .language-label { display:none; }
 }
+
+/* Study order: romanized reading -> Japanese with ruby -> localized meaning. */
+.phrase .romaji-first {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin-bottom: 14px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #cfdfd5;
+}
+.phrase .romaji-label {
+  width: fit-content;
+  font-size: .67rem;
+  line-height: 1.25;
+  letter-spacing: .12em;
+  color: #416d62;
+  font-weight: 750;
+}
+.phrase .romaji-text {
+  font-size: 1.16rem;
+  line-height: 1.5;
+  font-weight: 720;
+  color: #115c51;
+  overflow-wrap: anywhere;
+}
+.phrase strong.japanese-text {
+  display: block;
+  padding-top: .3em;
+  font-size: 1.13rem;
+  line-height: 2;
+}
+.phrase .meaning-after {
+  display: block;
+  margin: 6px 0 8px;
+  font-size: .9rem;
+  color: #4f6a60;
+}
