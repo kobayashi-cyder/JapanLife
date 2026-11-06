@@ -89,7 +89,7 @@ test('course UI launches in the selected language with romaji above Japanese gly
     const stored=new Map();
     const ls={getItem:k=>stored.get(k)||null,setItem:(k,v)=>stored.set(k,v)};
     const env=vm.createContext({
-      window:source,document,localStorage:ls,navigator:{},location:{protocol:'file:',search:'?lang=vi'},console
+      window:source,document,localStorage:ls,navigator:{},location:{protocol:'file:',search:'?lang=vi'},URLSearchParams,console
     });
     vm.runInContext(readFileSync('subjects/course.js','utf8'),env,{filename:'subjects/course.js'});
     assert.equal(document.documentElement.lang,'vi');
