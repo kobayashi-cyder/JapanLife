@@ -34,7 +34,7 @@ test('five UI languages and no automatic remote submission',()=>{
   assert.match(script,/sourceType:'self-report'/);
 });
 test('predefined topics and regions',()=>{
-  assert.match(script,/const TOPICS=\['waste','language','housing','work','health','admin','other'\]/);
+  assert.match(script,/const TOPICS=\['waste','language','safety','housing','work','health','admin','other'\]/);
   assert.match(script,/function validRegion\(v\)/);
   assert.match(script,/TOPICS\.includes\(category\)/);
 });
