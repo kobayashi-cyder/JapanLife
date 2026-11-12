@@ -15,7 +15,7 @@
       voiceTitle:'生活の困りごとを整理する',voiceIntro:'経験した問題と改善案を自分用の下書きとして整理します。',
       privateNote:'まだ自治体・運営者・第三者には送信されません。共有・提出の機能はありません。共用端末では保存内容が他の人に見られる可能性があります。',
       avoid:'氏名、住所、電話番号、在留カード番号、勤務先、病歴などは入力しないでください。',
-      category:'テーマ',choose:'テーマを選ぶ',waste:'ごみ・地域',language:'言葉・情報',housing:'住まい',work:'仕事',health:'医療',admin:'行政',other:'その他',
+      category:'テーマ',choose:'テーマを選ぶ',waste:'ごみ・地域',language:'言葉・情報',safety:'防災・災害',housing:'住まい',work:'仕事',health:'医療',admin:'行政',other:'その他',
       issue:'何に困りましたか？',issueHint:'例：ごみ収集の地区を見つけにくかった（個人情報は不要）',
       proposal:'どう改善されたらよいですか？（任意）',proposalHint:'例：地区を選んで収集表を見たい',
       save:'この端末に下書きを保存',export:'下書きをJSONで書き出す',draftTitle:'この端末の下書き',
@@ -34,7 +34,7 @@
       voiceTitle:'Organize a daily-life concern',voiceIntro:'Save what happened and a possible improvement as a private draft.',
       privateNote:'Nothing is sent to a municipality, JapanLife or anyone else. This is not a submission form. Other people may see locally saved drafts on shared devices.',
       avoid:'Do not include names, addresses, phone numbers, residence-card numbers, employers or medical details.',
-      category:'Topic',choose:'Select a topic',waste:'Waste & neighborhood',language:'Language & information',housing:'Housing',work:'Work',health:'Healthcare',admin:'Administration',other:'Other',
+      category:'Topic',choose:'Select a topic',waste:'Waste & neighborhood',language:'Language & information',safety:'Disaster readiness',housing:'Housing',work:'Work',health:'Healthcare',admin:'Administration',other:'Other',
       issue:'What was difficult?',issueHint:'Example: I could not find the waste calendar for my district (no personal details).',
       proposal:'What would improve it? (optional)',proposalHint:'Example: Let me select my district to find the calendar.',
       save:'Save draft on this device',export:'Export drafts as JSON',draftTitle:'Drafts on this device',
@@ -49,7 +49,7 @@
       local:'本地信息',voice:'问题草稿',localTitle:'查找当地官方信息',localIntro:'请选择地区，查看政府和支援机构的原始网页。',
       area:'地区',national:'全国',yonago:'米子市（试点）',source:'打开原始网页 ↗',official:'政府官方资料',support:'支援机构',checked:'链接核对日期',sourceNote:'规则可能变化，请核对原始网页。',voiceTitle:'整理生活中的困难',voiceIntro:'在本机保存问题与改善建议草稿。',
       privateNote:'内容不会发送给政府、运营方或第三方。这不是正式提交。共用设备上的草稿可能被他人看到。',
-      avoid:'请勿填写姓名、地址、电话、在留卡号码、单位或医疗信息。',category:'主题',choose:'选择主题',waste:'垃圾与社区',language:'语言与信息',housing:'住房',work:'工作',health:'医疗',admin:'行政',other:'其他',
+      avoid:'请勿填写姓名、地址、电话、在留卡号码、单位或医疗信息。',category:'主题',choose:'选择主题',waste:'垃圾与社区',language:'语言与信息',safety:'防灾',housing:'住房',work:'工作',health:'医疗',admin:'行政',other:'其他',
       issue:'遇到什么困难？',issueHint:'例如：难以找到所在地区的垃圾日历',proposal:'怎样改进？（可选）',proposalHint:'例如：可按地区查询',
       save:'保存到本机',export:'导出 JSON 草稿',draftTitle:'本机草稿',empty:'尚无草稿',delete:'删除草稿',saved:'已保存到本机，未发送。',
       required:'请选择主题并描述问题。',limit:'最多保存30条草稿。',blocked:'可能包含联系方式，请删除个人信息。',saveFailed:'本机保存失败。',exported:'已生成文件，分享前请检查。',noExport:'没有可导出的草稿。',deleteConfirm:'删除此本机草稿？',date:'创建时间',privacy:'草稿仅在本机保存、删除或导出，不自动提交。',beta:'说明文字为试译，请以原始网页为准。'
@@ -58,7 +58,7 @@
       local:'Thông tin địa phương',voice:'Bản nháp vấn đề',localTitle:'Tra cứu thông tin chính thức',localIntro:'Chọn khu vực và xem trang gốc của cơ quan hoặc tổ chức hỗ trợ.',
       area:'Khu vực',national:'Toàn Nhật Bản',yonago:'Thành phố Yonago (thử nghiệm)',source:'Mở nguồn gốc ↗',official:'Nguồn của chính quyền',support:'Tổ chức hỗ trợ',checked:'Ngày kiểm tra liên kết',sourceNote:'Quy định có thể thay đổi. Hãy kiểm tra trang gốc.',voiceTitle:'Ghi lại khó khăn trong cuộc sống',voiceIntro:'Lưu vấn đề và đề xuất dưới dạng bản nháp trên thiết bị.',
       privateNote:'Không gửi cho chính quyền, JapanLife hay bên thứ ba. Đây không phải biểu mẫu gửi ý kiến. Người khác có thể thấy dữ liệu trên thiết bị dùng chung.',
-      avoid:'Không nhập tên, địa chỉ, điện thoại, số thẻ cư trú, nơi làm việc hoặc thông tin y tế.',category:'Chủ đề',choose:'Chọn chủ đề',waste:'Rác và khu phố',language:'Ngôn ngữ',housing:'Nhà ở',work:'Công việc',health:'Y tế',admin:'Hành chính',other:'Khác',
+      avoid:'Không nhập tên, địa chỉ, điện thoại, số thẻ cư trú, nơi làm việc hoặc thông tin y tế.',category:'Chủ đề',choose:'Chọn chủ đề',waste:'Rác và khu phố',language:'Ngôn ngữ',safety:'Phòng chống thiên tai',housing:'Nhà ở',work:'Công việc',health:'Y tế',admin:'Hành chính',other:'Khác',
       issue:'Bạn gặp khó khăn gì?',issueHint:'Ví dụ: Không tìm được lịch thu gom rác của khu vực.',proposal:'Nên cải thiện thế nào? (tùy chọn)',proposalHint:'Ví dụ: Tra cứu lịch theo khu vực.',
       save:'Lưu nháp trên thiết bị',export:'Xuất JSON',draftTitle:'Bản nháp trên thiết bị',empty:'Chưa có bản nháp.',delete:'Xóa bản nháp',saved:'Đã lưu trên thiết bị, không gửi đi.',required:'Chọn chủ đề và mô tả vấn đề.',
       limit:'Chỉ lưu tối đa 30 bản nháp.',blocked:'Có thể chứa thông tin liên hệ. Hãy xóa dữ liệu cá nhân.',saveFailed:'Không thể lưu trên thiết bị.',exported:'Đã tạo tệp. Hãy kiểm tra trước khi chia sẻ.',noExport:'Không có bản nháp.',deleteConfirm:'Xóa bản nháp này?',date:'Ngày tạo',privacy:'Dữ liệu chỉ được lưu, xóa hoặc xuất trên thiết bị. Không tự động gửi.',beta:'Bản dịch đang thử nghiệm. Vui lòng xem bản gốc.'
@@ -69,7 +69,7 @@
       voiceTitle:'दैनिक समस्याको मस्यौदा',voiceIntro:'समस्या र सुधार सुझाव आफ्नो उपकरणमा सुरक्षित गर्नुहोस्।',
       privateNote:'नगरपालिका, JapanLife वा अरू कसैलाई पठाइँदैन। यो पेश गर्ने फाराम होइन। साझा उपकरणमा अरूले मस्यौदा देख्न सक्छन्।',
       avoid:'नाम, ठेगाना, फोन नम्बर, निवास कार्ड नम्बर, रोजगारदाता वा स्वास्थ्य विवरण नराख्नुहोस्।',
-      category:'विषय',choose:'विषय छान्नुहोस्',waste:'फोहोर र छिमेक',language:'भाषा र सूचना',housing:'आवास',work:'काम',health:'स्वास्थ्य',admin:'प्रशासन',other:'अन्य',
+      category:'विषय',choose:'विषय छान्नुहोस्',waste:'फोहोर र छिमेक',language:'भाषा र सूचना',safety:'विपद् तयारी',housing:'आवास',work:'काम',health:'स्वास्थ्य',admin:'प्रशासन',other:'अन्य',
       issue:'के समस्या भयो?',issueHint:'उदाहरण: आफ्नो क्षेत्रको फोहोर तालिका भेटिएन।',
       proposal:'के सुधार चाहिन्छ? (ऐच्छिक)',proposalHint:'उदाहरण: क्षेत्र छानेर तालिका हेर्न मिलोस्।',
       save:'उपकरणमा मस्यौदा राख्नुहोस्',export:'JSON निर्यात',draftTitle:'उपकरणका मस्यौदा',empty:'मस्यौदा छैन।',delete:'मस्यौदा मेट्नुहोस्',saved:'उपकरणमा सुरक्षित। कतै पठाइएको छैन।',
@@ -96,7 +96,7 @@
       url:'https://www.city.yonago.lg.jp/45368.htm'
     },
     {
-      id:'yonago-hazard',area:'yonago',kind:'official',topic:'health',checked:'2026-11-12',
+      id:'yonago-hazard',area:'yonago',kind:'official',topic:'safety',checked:'2026-11-12',
       title:{ja:'米子市 洪水ハザードマップ',en:'Yonago flood hazard maps'},
       detail:{ja:'洪水リスクと避難の備え。緊急時は最新の公式情報を確認。',en:'Flood-risk and preparedness resources. For emergencies, confirm current alerts.'},
       url:'https://www.city.yonago.lg.jp/8061.htm'
@@ -109,7 +109,7 @@
     }
   ]);
   const KEY='japanlife-voice-drafts-v1', REGION_KEY='japanlife-local-region-v1';
-  const TOPICS=['waste','language','housing','work','health','admin','other'];
+  const TOPICS=['waste','language','safety','housing','work','health','admin','other'];
   const root=document.querySelector('.tabs');
   const shell=document.querySelector('#main');
   if(!root||!shell) return;
